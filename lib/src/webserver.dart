@@ -4,11 +4,12 @@ import 'package:webservant/webservant.dart';
 
 class Webserver {
   int port;
+  bool fCORS;
   InternetAddress hostname = InternetAddress.anyIPv4;
   HttpServer server;
   final Map<String, UrlCollection> _handlerList = <String, UrlCollection>{};
 
-  Webserver({this.hostname, this.port = 8080});
+  Webserver({this.hostname, this.port = 8080, this.fCORS = false});
 
   void run() async {
     server = await HttpServer.bind(hostname, port);
@@ -24,7 +25,7 @@ class Webserver {
       var urlHandler = _handlerList[request.method];
       if (urlHandler.includes(uri)) {
         var url = urlHandler.getUrlFor(uri);
-        urlHandler.getUrlFor(uri).function(Response(request, url));
+        urlHandler.getUrlFor(uri).function(Response(request, url, fCORS: fCORS));
       } else {
         _send404(request);
       }

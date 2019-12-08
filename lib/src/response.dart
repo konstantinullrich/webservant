@@ -8,10 +8,17 @@ class Response {
   final HttpResponse _response;
   final Map<String, String> queryParameters;
   final Url originUrl;
+  final bool fCORS;
 
-  Response(this._httpRequest, this.originUrl) :
+  Response(this._httpRequest, this.originUrl, {this.fCORS = false}) :
     _response = _httpRequest.response,
-    queryParameters = _httpRequest.uri.queryParameters;
+    queryParameters = _httpRequest.uri.queryParameters {
+    if (fCORS) {
+      addHeader('Access-Control-Allow-Origin', '*');
+      addHeader('Access-Control-Allow-Methods', '*');
+      addHeader('Access-Control-Allow-Headers', '*');
+    }
+  }
 
 
   HttpRequest get originalRequest => _httpRequest;
