@@ -1,22 +1,7 @@
-A library for Dart developers.
+# Webservant
+A simple Dart Webserver library for small REST Services
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+> This library is a simplified interface to interact with the [dart:io Webserver](https://api.dartlang.org/stable/2.7.0/dart-io/dart-io-library.html)
 
-## Usage
-
-A simple usage example:
-
-```dart
-import 'package:webservant/webservant.dart';
-
-main() {
-  var awesome = new Awesome();
-}
-```
-
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
+## See more
+To see more take a look at the examples
