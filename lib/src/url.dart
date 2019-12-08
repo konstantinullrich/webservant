@@ -1,6 +1,6 @@
 class Url {
-  String _url;
   Function function;
+  String _url;
   List<String> _parts = <String>[];
 
   String get url => _url;

@@ -1,6 +1,6 @@
 name: webservant
 description: A simple Dart Webserver library for small REST Services
-version: 0.0.1
+version: 0.0.2
 author: Konstantin Ullrich <konstantinullrich12@gmail.com>
 homepage: https://github.com/konstantinullrich
 repository: https://github.com/konstantinullrich/webservant

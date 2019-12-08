@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:webservant/webservant.dart';
 
 class Webserver {
-  int port;
-  bool fCORS;
+  final Map<String, UrlCollection> _handlerList = <String, UrlCollection>{};
+  final int port;
   InternetAddress hostname = InternetAddress.anyIPv4;
   HttpServer server;
-  final Map<String, UrlCollection> _handlerList = <String, UrlCollection>{};
+  bool fCORS;
 
   Webserver({this.hostname, this.port = 8080, this.fCORS = false});
 

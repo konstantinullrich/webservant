@@ -1,7 +1,7 @@
 import 'package:webservant/webservant.dart';
 
 class UrlCollection {
-  Map<String, Url> _collection = <String, Url>{};
+  final Map<String, Url> _collection = <String, Url>{};
   int get length => _collection.length;
 
   void add(Url addUrl) => _collection[addUrl.url] = addUrl;
@@ -17,7 +17,6 @@ class UrlCollection {
     Url mercuryUrl;
     _collection.forEach((String compareUrl, Url currentUrl){
       if (currentUrl.isMatching(url)) {
-        print(currentUrl);
         mercuryUrl = currentUrl;
         return;
       }
@@ -26,4 +25,7 @@ class UrlCollection {
   }
 
   bool includes(String url) => getUrlFor(url) != null;
+
+  @override
+  String toString() => _collection.keys.toString();
 }
