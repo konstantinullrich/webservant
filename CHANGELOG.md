@@ -1,3 +1,7 @@
+## 0.1.1
+
+- Changed Readme
+
 ## 0.1.0
 
 - Ready for Pre-Release
