@@ -13,6 +13,11 @@ class Url {
     _parts = url.split('/');
   }
 
+  /// Get the Url Parameter
+  ///
+  /// A Url Parameter is described using ":" in the constructor
+  /// For example: "/query/:query_param" includes the parameter query_param
+  /// Returns a [Map]
   Map<String, String> getParameters(String url) {
     var params = <String, String>{};
     if (url[0] == '/') {
@@ -31,6 +36,10 @@ class Url {
     return params;
   }
 
+  /// Check if a String is matching a Url
+  ///
+  /// Useful if you want to check if a parameterized Url matches a String
+  /// returns a [bool]
   bool isMatching(String url) {
     if (url[0] == '/') {
       url = url.substring(1);

@@ -16,6 +16,7 @@ class Webserver {
    }
   }
 
+  /// Serve the [Webserver] with it's current state using http
   void run() async {
     server = await HttpServer.bind(hostname, port);
     print('Listening on http://${server.address.host}:${server.port}/');
@@ -51,6 +52,9 @@ class Webserver {
       ..close();
   }
 
+  /// Add a Http Method call
+  ///
+  /// the default Method is GET
   void addMethodCall(String url, Function(Response) callback,
       {String method = 'GET'}) {
     method = method.toUpperCase();
@@ -60,22 +64,39 @@ class Webserver {
     _handlerList[method].add(Url(url, function: callback));
   }
 
+  /// Add a Http GET Request
   void get(String url, Function(Response) callback) =>
       addMethodCall(url, callback, method: 'GET');
+
+  /// Add a Http HEAD Request
   void head(String url, Function(Response) callback) =>
       addMethodCall(url, callback, method: 'HEAD');
+
+  /// Add a Http POST Request
   void post(String url, Function(Response) callback) =>
       addMethodCall(url, callback, method: 'POST');
+
+  /// Add a Http PUT Request
   void put(String url, Function(Response) callback) =>
       addMethodCall(url, callback, method: 'PUT');
+
+  /// Add a Http DELETE Request
   void delete(String url, Function(Response) callback) =>
       addMethodCall(url, callback, method: 'DELETE');
+
+  /// Add a Http CONNECT Request
   void connect(String url, Function(Response) callback) =>
       addMethodCall(url, callback, method: 'CONNECT');
+
+  /// Add a Http OPTIONS Request
   void options(String url, Function(Response) callback) =>
       addMethodCall(url, callback, method: 'OPTIONS');
+
+  /// Add a Http TRACE Request
   void trace(String url, Function(Response) callback) =>
       addMethodCall(url, callback, method: 'TRACE');
+
+  /// Add a Http PATCH Request
   void patch(String url, Function(Response) callback) =>
       addMethodCall(url, callback, method: 'PATCH');
 }
