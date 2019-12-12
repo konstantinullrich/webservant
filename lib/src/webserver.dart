@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:webservant/webservant.dart';
 
+InternetAddress anyIPv4 = InternetAddress.anyIPv4;
 class Webserver {
   final Map<String, UrlCollection> _handlerList = <String, UrlCollection>{};
   final int port;
@@ -9,7 +10,11 @@ class Webserver {
   HttpServer server;
   bool fCORS;
 
-  Webserver({this.hostname, this.port = 8080, this.fCORS = false});
+  Webserver({InternetAddress hostname, this.port = 8080, this.fCORS = false}) {
+   if (hostname != null) {
+     this.hostname = hostname;
+   }
+  }
 
   void run() async {
     server = await HttpServer.bind(hostname, port);
