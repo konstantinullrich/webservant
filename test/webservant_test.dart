@@ -47,7 +47,8 @@ void main() {
     });
 
     test('Get Url from Collection', () {
-      expect(urlCollection.getUrlFor('/test').toString(), Url('/test').toString());
+      expect(
+          urlCollection.getUrlFor('/test').toString(), Url('/test').toString());
     });
   });
 }

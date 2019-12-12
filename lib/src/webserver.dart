@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:webservant/webservant.dart';
 
 InternetAddress anyIPv4 = InternetAddress.anyIPv4;
+
 class Webserver {
   final Map<String, UrlCollection> _handlerList = <String, UrlCollection>{};
   final int port;
@@ -11,9 +12,9 @@ class Webserver {
   bool fCORS;
 
   Webserver({InternetAddress hostname, this.port = 8080, this.fCORS = false}) {
-   if (hostname != null) {
-     this.hostname = hostname;
-   }
+    if (hostname != null) {
+      this.hostname = hostname;
+    }
   }
 
   /// Serve the [Webserver] with it's current state using http

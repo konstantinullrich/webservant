@@ -55,7 +55,8 @@ class Url {
         return false;
       }
       cursor++;
-    };
+    }
+    ;
 
     return true;
   }

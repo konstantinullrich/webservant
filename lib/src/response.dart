@@ -27,7 +27,7 @@ class Response {
   Future<String> get requestData => utf8.decoder.bind(_httpRequest).join();
 
   /// Get the Url Parameter from the request
-  /// 
+  ///
   /// Returns a [Map]
   Map<String, String> get urlParams =>
       originUrl.getParameters(_httpRequest.uri.path);
@@ -46,7 +46,7 @@ class Response {
   /// Remove a Header of the [HttpResponse]
   void removeHeader(String name, Object value) =>
       _response.headers.remove(name, value);
-  
+
   /// Write a response
   void write(Object data) => _response.write(data);
 
