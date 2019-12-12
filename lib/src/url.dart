@@ -22,7 +22,7 @@ class Url {
     if (_parts.length == partsOfRequestedUrl.length) {
       var cursor = 0;
       _parts.forEach((part) {
-        if(part.startsWith(':')) {
+        if (part.startsWith(':')) {
           params[part.substring(1)] = partsOfRequestedUrl[cursor];
         }
         cursor++;
@@ -42,7 +42,7 @@ class Url {
     }
     var cursor = 0;
     for (var part in _parts) {
-      if(!part.startsWith(':') && part != partsOfRequestedUrl[cursor]) {
+      if (!part.startsWith(':') && part != partsOfRequestedUrl[cursor]) {
         return false;
       }
       cursor++;

@@ -14,14 +14,14 @@ class UrlCollection {
   }
 
   Url getUrlFor(String url) {
-    Url mercuryUrl;
-    _collection.forEach((String compareUrl, Url currentUrl){
+    Url matchingUrl;
+    _collection.forEach((String compareUrl, Url currentUrl) {
       if (currentUrl.isMatching(url)) {
-        mercuryUrl = currentUrl;
+        matchingUrl = currentUrl;
         return;
       }
     });
-    return mercuryUrl;
+    return matchingUrl;
   }
 
   bool includes(String url) => getUrlFor(url) != null;

@@ -25,7 +25,9 @@ class Webserver {
       var urlHandler = _handlerList[request.method];
       if (urlHandler.includes(uri)) {
         var url = urlHandler.getUrlFor(uri);
-        urlHandler.getUrlFor(uri).function(Response(request, url, fCORS: fCORS));
+        urlHandler
+            .getUrlFor(uri)
+            .function(Response(request, url, fCORS: fCORS));
       } else {
         _send404(request);
       }
@@ -36,13 +38,16 @@ class Webserver {
         ..close();
     }
   }
+
   void _send404(HttpRequest request) {
     request.response
       ..statusCode = HttpStatus.notFound
       ..write('Error 404: Not found: ${request.uri.path}.')
       ..close();
   }
-  void addMethodCall(String url, Function(Response) callback, {String method = 'GET'}) {
+
+  void addMethodCall(String url, Function(Response) callback,
+      {String method = 'GET'}) {
     method = method.toUpperCase();
     if (!_handlerList.containsKey(method)) {
       _handlerList[method] = UrlCollection();
@@ -50,13 +55,22 @@ class Webserver {
     _handlerList[method].add(Url(url, function: callback));
   }
 
-  void get(String url, Function(Response) callback) => addMethodCall(url, callback, method: 'GET');
-  void head(String url, Function(Response) callback) => addMethodCall(url, callback, method: 'HEAD');
-  void post(String url, Function(Response) callback) => addMethodCall(url, callback, method: 'POST');
-  void put(String url, Function(Response) callback) => addMethodCall(url, callback, method: 'PUT');
-  void delete(String url, Function(Response) callback) => addMethodCall(url, callback, method: 'DELETE');
-  void connect(String url, Function(Response) callback) => addMethodCall(url, callback, method: 'CONNECT');
-  void options(String url, Function(Response) callback) => addMethodCall(url, callback, method: 'OPTIONS');
-  void trace(String url, Function(Response) callback) => addMethodCall(url, callback, method: 'TRACE');
-  void patch(String url, Function(Response) callback) => addMethodCall(url, callback, method: 'PATCH');
+  void get(String url, Function(Response) callback) =>
+      addMethodCall(url, callback, method: 'GET');
+  void head(String url, Function(Response) callback) =>
+      addMethodCall(url, callback, method: 'HEAD');
+  void post(String url, Function(Response) callback) =>
+      addMethodCall(url, callback, method: 'POST');
+  void put(String url, Function(Response) callback) =>
+      addMethodCall(url, callback, method: 'PUT');
+  void delete(String url, Function(Response) callback) =>
+      addMethodCall(url, callback, method: 'DELETE');
+  void connect(String url, Function(Response) callback) =>
+      addMethodCall(url, callback, method: 'CONNECT');
+  void options(String url, Function(Response) callback) =>
+      addMethodCall(url, callback, method: 'OPTIONS');
+  void trace(String url, Function(Response) callback) =>
+      addMethodCall(url, callback, method: 'TRACE');
+  void patch(String url, Function(Response) callback) =>
+      addMethodCall(url, callback, method: 'PATCH');
 }
